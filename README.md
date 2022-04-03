@@ -1,6 +1,9 @@
-# projeto
+# Jokenpô (projeto em andamento)
 
-A new Flutter project.
+App feito em Dart/Flutter.
+
+Trata-se de um jogo de jokenpô com gatos. Compativel com Android e IOS.
+
 
 ## Getting Started
 
