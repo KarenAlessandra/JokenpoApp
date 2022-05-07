@@ -23,14 +23,18 @@ class HomePage extends StatelessWidget {
             'Entre garras e presas: Jokenpô',
             style: GoogleFonts.bebasNeue(
               fontStyle: FontStyle.italic,
-              fontSize: 32.5,
+              fontSize: 37.0,
               textStyle: style,
               color: Color.fromRGBO(244, 123, 143, 1),
             ),
           ),
+
           Image.asset(
-            'imagens/cat_sit_black.gif',
-            alignment: Alignment.topCenter,
+            'imagens/cat_sit.gif',
+            alignment: Alignment.center,
+          ),
+          const Padding(
+            padding: EdgeInsets.all(10),
           ),
           BotaoJogar(
               title: 'Jogar - Sozinho',
@@ -40,7 +44,7 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const JokenpoPage()),
                 );
               }),
-          BotaoJogar(title: 'Jogar - Duas Pessoas', action: () {}),
+//          BotaoJogar(title: 'Jogar - Duas Pessoas', action: () {}),
           BotaoJogar(title: 'Jogar - Online', action: () {}),
         ],
       ),

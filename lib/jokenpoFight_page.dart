@@ -21,14 +21,14 @@ class JokenpoFightPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var style = const TextStyle(
-        fontSize: 30,
+        fontSize: 60,
         fontWeight: FontWeight.bold,
         color: Color.fromRGBO(244, 123, 143, 1));
     return Scaffold(
       backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const Padding(padding: EdgeInsets.only(top: 0)), // espaçamento
@@ -41,10 +41,14 @@ class JokenpoFightPage extends StatelessWidget {
               ],
             ),
             //row aqui
-            // Row(
-            // children: [
-            choiceToImage(escolha, false),
-            choiceToImage(pc, true),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                choiceToImage(escolha, false),
+                choiceToImage(pc, true),
+              ],
+            ),
+            const Padding(padding: EdgeInsets.only(top: 0)), // espaçamento
             whoWon(escolha, pc),
 
             BotaoJogar(
@@ -59,8 +63,7 @@ class JokenpoFightPage extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => HomePage()));
                 }),
-            // ],
-            // ),
+            const Padding(padding: EdgeInsets.only(bottom: 0)), // espaçamento
           ],
         ),
       ),
@@ -73,25 +76,25 @@ choiceToImage(String choice, bool other) {
     if (choice == "pedra") {
       return Image.asset(
         "imagens/rock.gif",
-        height: 200,
-        width: 200,
+        height: 205,
+        width: 205,
       );
     } else if (choice == "papel") {
-      return Image.asset("imagens/paper.gif", height: 200, width: 200);
+      return Image.asset("imagens/paper.gif", height: 205, width: 205);
     } else {
-      return Image.asset("imagens/scissors.gif", height: 200, width: 200);
+      return Image.asset("imagens/scissors.gif", height: 205, width: 205);
     }
   } else {
     if (choice == "pedra") {
       return Image.asset(
         "imagens/other_rock.gif",
-        height: 200,
-        width: 200,
+        height: 205,
+        width: 205,
       );
     } else if (choice == "papel") {
-      return Image.asset("imagens/other_paper.gif", height: 200, width: 200);
+      return Image.asset("imagens/other_paper.gif", height: 205, width: 205);
     } else {
-      return Image.asset("imagens/other_scissors.gif", height: 200, width: 200);
+      return Image.asset("imagens/other_scissors.gif", height: 205, width: 205);
     }
   }
 }
