@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "460647169637",
+    "project_id": "jokenpoapp",
+    "storage_bucket": "jokenpoapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460647169637:android:9706285562392b7a95108c",
+        "android_client_info": {
+          "package_name": "com.example.projeto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460647169637-38mir9k4np0m3vlc80fv0hnl9u2k4vo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_1iEm2g4_tqw-Keefv8TfuR7tjrg2N0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460647169637-38mir9k4np0m3vlc80fv0hnl9u2k4vo5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
