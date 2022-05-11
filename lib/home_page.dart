@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto/botao_jogar.dart';
+import 'package:projeto/login_page.dart';
 
 import 'jokenpo_page.dart';
 
@@ -28,7 +29,6 @@ class HomePage extends StatelessWidget {
               color: Color.fromRGBO(244, 123, 143, 1),
             ),
           ),
-
           Image.asset(
             'imagens/cat_sit.gif',
             alignment: Alignment.center,
@@ -45,7 +45,12 @@ class HomePage extends StatelessWidget {
                 );
               }),
 //          BotaoJogar(title: 'Jogar - Duas Pessoas', action: () {}),
-          BotaoJogar(title: 'Jogar - Online', action: () {}),
+          BotaoJogar(
+              title: 'Jogar - Online',
+              action: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
+              }),
         ],
       ),
     );
