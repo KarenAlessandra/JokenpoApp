@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
       if (isLogin) {
         titulo = 'Bem vindo';
         actionButton = 'Login';
-        toggleButton = 'Cadastre-se agora para jogar online.';
+        toggleButton = 'É necessário estar logado para jogar online.';
       } else {
         titulo = 'Crie sua conta';
         actionButton = 'Cadastrar';
@@ -62,10 +62,11 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: const Color.fromRGBO(161, 220, 216, 1)),
       backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 100),
+          padding: EdgeInsets.only(top: 60),
           child: Form(
             key: formKey,
             child: Column(
@@ -153,8 +154,20 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 TextButton(
+                    style: TextButton.styleFrom(
+                        textStyle: TextStyle(
+                            decorationColor: Color.fromRGBO(244, 123, 143, 1),
+                            color: Color.fromRGBO(244, 123, 143, 1),
+                            fontSize: 15,
+                            letterSpacing: 0)),
                     onPressed: () => setFormAction(!isLogin),
                     child: Text(toggleButton)),
+                Image.asset(
+                  'imagens/cat_loaf.gif',
+                  alignment: Alignment.center,
+                  width: 200,
+                  height: 200,
+                ),
               ],
             ),
           ),
