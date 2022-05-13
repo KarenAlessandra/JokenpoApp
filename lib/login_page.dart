@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                     fontSize: 45,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
-                    color: Color.fromRGBO(244, 123, 143, 1),
+                    color: const Color.fromRGBO(244, 123, 143, 1),
                   ),
                 ),
                 Padding(
@@ -87,12 +87,17 @@ class _LoginPageState extends State<LoginPage> {
                     controller: email,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Email',
+                      labelText: 'E-mail',
                     ),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Informe o email corretamente!';
+                      }
+                      if (!RegExp(
+                              r"^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$")
+                          .hasMatch(value)) {
+                        return 'Ei! Isto não é um e-mail!';
                       }
                       return null;
                     },
@@ -146,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 2,
-                                color: Color.fromRGBO(244, 123, 143, 1)),
+                                color: const Color.fromRGBO(244, 123, 143, 1)),
                           ),
                         ),
                       ],
@@ -155,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                     style: TextButton.styleFrom(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             decorationColor: Color.fromRGBO(244, 123, 143, 1),
                             color: Color.fromRGBO(244, 123, 143, 1),
                             fontSize: 15,
