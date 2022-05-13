@@ -28,16 +28,16 @@ class JokenpoFightPage extends StatelessWidget {
       backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Padding(padding: EdgeInsets.only(top: 0)), // espaçamento
+            const Padding(padding: EdgeInsets.only(top: 10)), // espaçamento
             AnimatedTextKit(
               repeatForever: false,
               isRepeatingAnimation: false,
               animatedTexts: [
                 WavyAnimatedText('JO KEN PÔ!',
-                    textStyle: style, speed: const Duration(milliseconds: 180)),
+                    textStyle: style, speed: const Duration(milliseconds: 220)),
               ],
             ),
             //row aqui
@@ -48,14 +48,17 @@ class JokenpoFightPage extends StatelessWidget {
                 choiceToImage(pc, true),
               ],
             ),
-            const Padding(padding: EdgeInsets.only(top: 0)), // espaçamento
             whoWon(escolha, pc),
 
             BotaoJogar(
                 title: "Jogar novamente",
                 action: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => JokenpoPage()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const JokenpoPage(),
+                        maintainState: false),
+                  );
                 }),
             BotaoJogar(
                 title: "Voltar ao Menu",
@@ -63,7 +66,8 @@ class JokenpoFightPage extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => HomePage()));
                 }),
-            const Padding(padding: EdgeInsets.only(bottom: 0)), // espaçamento
+
+            Padding(padding: EdgeInsets.all(0.0)), // espaçamento
           ],
         ),
       ),
@@ -75,26 +79,28 @@ choiceToImage(String choice, bool other) {
   if (!other) {
     if (choice == "pedra") {
       return Image.asset(
-        "imagens/rock.gif",
-        height: 205,
-        width: 205,
+        "imagens/user_rock.gif",
+        height: 205.5,
+        width: 205.5,
       );
     } else if (choice == "papel") {
-      return Image.asset("imagens/paper.gif", height: 205, width: 205);
+      return Image.asset("imagens/user_paper.gif", height: 205.5, width: 205.5);
     } else {
-      return Image.asset("imagens/scissors.gif", height: 205, width: 205);
+      return Image.asset("imagens/user_scissors.gif",
+          height: 205.5, width: 205.5);
     }
   } else {
     if (choice == "pedra") {
       return Image.asset(
-        "imagens/other_rock.gif",
-        height: 205,
-        width: 205,
+        "imagens/grey_rock.gif",
+        height: 205.5,
+        width: 205.5,
       );
     } else if (choice == "papel") {
-      return Image.asset("imagens/other_paper.gif", height: 205, width: 205);
+      return Image.asset("imagens/grey_paper.gif", height: 205.5, width: 205.5);
     } else {
-      return Image.asset("imagens/other_scissors.gif", height: 205, width: 205);
+      return Image.asset("imagens/grey_scissors.gif",
+          height: 205.5, width: 205.5);
     }
   }
 }

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/home_page.dart';
+import 'package:projeto/leaderboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'auth_service.dart';
 import 'firebase_options.dart';
+import 'dart:ffi';
+import 'firebase_options.dart';
+import 'leaderboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
