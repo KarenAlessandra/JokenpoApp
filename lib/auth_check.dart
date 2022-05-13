@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/auth_service.dart';
 import 'package:projeto/home_page.dart';
+import 'package:projeto/online.dart';
 import 'package:provider/provider.dart';
 
 import 'login_page.dart';
@@ -21,8 +22,9 @@ class _AuthCheckState extends State<AuthCheck> {
       return loading();
     else if (auth.usuario == null) {
       return const LoginPage();
-    } else
-      return HomePage();
+    } else {
+      return const Online();
+    }
   }
 
   loading() {
