@@ -154,7 +154,7 @@ class JokenpoPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 200),
               child: Image(
