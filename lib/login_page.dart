@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 60),
+          padding: EdgeInsets.only(top: 40),
           child: Form(
             key: formKey,
             child: Column(
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextFormField(
                     controller: senha,
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Senha',
                     ),
