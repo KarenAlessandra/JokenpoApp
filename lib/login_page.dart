@@ -160,18 +160,19 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                     style: TextButton.styleFrom(
-                        textStyle: const TextStyle(
-                            decorationColor: Color.fromRGBO(244, 123, 143, 1),
-                            color: Color.fromRGBO(244, 123, 143, 1),
-                            fontSize: 15,
-                            letterSpacing: 0)),
+                        primary: const Color.fromRGBO(81, 174, 174, 1),
+                        textStyle:
+                            const TextStyle(fontSize: 15, letterSpacing: 0)),
                     onPressed: () => setFormAction(!isLogin),
                     child: Text(toggleButton)),
-                Image.asset(
-                  'imagens/cat_loaf.gif',
-                  alignment: Alignment.center,
-                  width: 200,
-                  height: 200,
+                Padding(
+                  padding: const EdgeInsets.only(left: 200),
+                  child: Image.asset(
+                    'imagens/cat_loaf.gif',
+                    // alignment: Alignment.center,
+                    width: 200,
+                    height: 200,
+                  ),
                 ),
               ],
             ),
