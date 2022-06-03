@@ -66,6 +66,7 @@ class JokenpoPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 250),
             Text(
               "Escolha um dos ataques:",
               style: GoogleFonts.bebasNeue(
@@ -152,6 +153,12 @@ class JokenpoPage extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            SizedBox(height: 25),
+            Padding(
+              padding: const EdgeInsets.only(left: 200),
+              child: Image(
+                  image: AssetImage('imagens/cat_fight.gif'), height: 200),
             ),
           ],
         ),
