@@ -3,8 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:projeto/botao_jogar.dart';
-import 'package:projeto/logica.dart';
+import 'package:projeto/widgets/botao_jogar.dart';
+import 'package:projeto/widgets/logica.dart';
 
 import 'home_page.dart';
 import 'jokenpo_page.dart';

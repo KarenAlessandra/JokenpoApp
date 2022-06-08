@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projeto/botao_jogar.dart';
-import 'package:projeto/login_page.dart';
+import 'package:projeto/widgets/botao_jogar.dart';
+import 'package:projeto/pages/login_page.dart';
 
 import 'jokenpo_page.dart';
-import 'online.dart';
+import '../online.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/auth_service.dart';
-import 'package:projeto/home_page.dart';
+import 'package:projeto/services/auth_service.dart';
+import 'package:projeto/pages/home_page.dart';
 import 'package:projeto/online.dart';
 import 'package:provider/provider.dart';
 
-import 'login_page.dart';
+import '../pages/login_page.dart';
 
 class AuthCheck extends StatefulWidget {
   const AuthCheck({Key? key}) : super(key: key);

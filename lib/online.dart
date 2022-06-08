@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/leaderboard.dart';
+import 'package:projeto/widgets/leaderboard.dart';
 
 class Online extends StatelessWidget {
   const Online({Key? key}) : super(key: key);
