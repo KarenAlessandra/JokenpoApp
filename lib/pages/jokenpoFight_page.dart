@@ -56,7 +56,7 @@ class JokenpoFightPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const JokenpoPage(),
+                        builder: (context) => JokenpoPage(),
                         maintainState: false),
                   );
                 }),

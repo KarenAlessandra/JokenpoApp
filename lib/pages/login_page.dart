@@ -166,10 +166,10 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () => setFormAction(!isLogin),
                     child: Text(toggleButton)),
                 Padding(
-                  padding: const EdgeInsets.only(left: 200),
+                  padding: const EdgeInsets.only(left: 25),
                   child: Image.asset(
                     'imagens/cat_loaf.gif',
-                    // alignment: Alignment.center,
+                    alignment: Alignment.center,
                     width: 200,
                     height: 200,
                   ),

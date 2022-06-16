@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto/pages/home_page.dart';
 import 'package:projeto/widgets/leaderboard.dart';
@@ -14,6 +15,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  FirebaseFirestore.instance.settings =
+      const Settings(host: 'localhost:8080', sslEnabled: false);
+
   runApp(
     MultiProvider(
       providers: [
@@ -31,7 +36,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Jokenpô Game',
       debugShowCheckedModeBanner: false,
       //theme: ThemeData(backgroundColor: const Color.fromRGBO(249, 190, 125, 1)),
