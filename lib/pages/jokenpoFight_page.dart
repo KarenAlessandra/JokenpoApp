@@ -1,17 +1,23 @@
 import 'dart:ffi';
+import 'dart:io';
 import 'dart:math';
-
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:projeto/widgets/botao_jogar.dart';
 import 'package:projeto/widgets/logica.dart';
-
+import 'package:screenshot/screenshot.dart';
+import 'package:share/share.dart';
 import 'home_page.dart';
 import 'jokenpo_page.dart';
 
 class JokenpoFightPage extends StatelessWidget {
   late String escolha;
   late String pc;
+  final controller = ScreenshotController();
   // const JokenpoFightPage({Key? key, escolha = String}) : super(key: key);
   JokenpoFightPage(escolha, {Key? key}) {
     this.escolha = escolha;
@@ -24,54 +30,63 @@ class JokenpoFightPage extends StatelessWidget {
         fontSize: 60,
         fontWeight: FontWeight.bold,
         color: Color.fromRGBO(244, 123, 143, 1));
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            const Padding(padding: EdgeInsets.only(top: 10)), // espaçamento
-            AnimatedTextKit(
-              repeatForever: false,
-              isRepeatingAnimation: false,
-              animatedTexts: [
-                WavyAnimatedText('JO KEN PÔ!',
-                    textStyle: style, speed: const Duration(milliseconds: 220)),
+    return Screenshot(
+        controller: controller,
+        child: Scaffold(
+          backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                const Padding(padding: EdgeInsets.all(65.0)), // espaçamento
+                AnimatedTextKit(
+                  repeatForever: false,
+                  isRepeatingAnimation: false,
+                  animatedTexts: [
+                    WavyAnimatedText('JO KEN PÔ!',
+                        textStyle: style,
+                        speed: const Duration(milliseconds: 220)),
+                  ],
+                ),
+                //row aqui
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    choiceToImage(escolha, false),
+                    choiceToImage(pc, true),
+                  ],
+                ),
+                whoWon(escolha, pc),
+
+                BotaoJogar(
+                    title: "Jogar novamente",
+                    action: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => JokenpoPage(),
+                            maintainState: false),
+                      );
+                    }),
+                BotaoJogar(
+                    title: "Voltar ao Menu",
+                    action: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    }),
+                BotaoJogar(
+                    title: "Captura de tela",
+                    action: () async {
+                      final image =
+                          await controller.captureFromWidget(build(context));
+                    }),
+                Padding(padding: EdgeInsets.all(0.0)),
+                // espaçamento
               ],
             ),
-            //row aqui
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                choiceToImage(escolha, false),
-                choiceToImage(pc, true),
-              ],
-            ),
-            whoWon(escolha, pc),
-
-            BotaoJogar(
-                title: "Jogar novamente",
-                action: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => JokenpoPage(),
-                        maintainState: false),
-                  );
-                }),
-            BotaoJogar(
-                title: "Voltar ao Menu",
-                action: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                }),
-
-            Padding(padding: EdgeInsets.all(0.0)), // espaçamento
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }
 
