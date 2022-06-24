@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto/pages/home_page.dart';
-import 'package:projeto/widgets/leaderboard.dart';
+import 'package:projeto/pages/leaderboard_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'services/auth_service.dart';
 import 'firebase_options.dart';
 import 'dart:ffi';
 import 'firebase_options.dart';
-import 'widgets/leaderboard.dart';
+import 'pages/leaderboard_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

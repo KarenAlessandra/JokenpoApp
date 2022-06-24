@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/pages/lobby_page.dart';
 import 'package:projeto/pages/login_page.dart';
-import 'package:projeto/widgets/leaderboard.dart';
+import 'package:projeto/services/auth_service.dart';
+import 'package:projeto/pages/leaderboard_page.dart';
+import 'package:provider/provider.dart';
 
 class Online extends StatelessWidget {
   const Online({Key? key}) : super(key: key);
@@ -36,7 +39,13 @@ class Online extends StatelessWidget {
                     style: TextButton.styleFrom(
                       backgroundColor: Color.fromRGBO(161, 220, 216, 1),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LobbyPage()),
+                      );
+                    },
                     child: const Text('Entrar no lobby')),
               ],
             ),
@@ -64,6 +73,7 @@ class Online extends StatelessWidget {
                   style: TextButton.styleFrom(
                       backgroundColor: Color.fromRGBO(161, 220, 216, 1)),
                   onPressed: () {
+                    context.read<AuthService>().logout();
                     Navigator.push(
                       context,
                       MaterialPageRoute(

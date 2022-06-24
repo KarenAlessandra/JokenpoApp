@@ -103,9 +103,9 @@ class _JokenpoFightPageState extends State<JokenpoFightPage> {
                 BotaoJogar(
                     title: "Captura de tela",
                     action: () async {
-                      // dispose();
+                      dispose();
                       final image = await screenshotController.capture();
-                      Share.shareFiles([image]);
+                      // Share.shareFiles([image]);
                     }),
                 const Padding(padding: EdgeInsets.all(25.0)),
                 // espaçamento

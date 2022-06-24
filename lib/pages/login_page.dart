@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projeto/online.dart';
+import 'package:projeto/pages/online_page.dart';
 import 'package:projeto/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/services/auth_service.dart';
 import 'package:projeto/pages/home_page.dart';
-import 'package:projeto/online.dart';
+import 'package:projeto/pages/online_page.dart';
 import 'package:provider/provider.dart';
 
 import '../pages/login_page.dart';

@@ -4,7 +4,7 @@ import 'package:projeto/widgets/botao_jogar.dart';
 import 'package:projeto/pages/login_page.dart';
 import 'package:screenshot/screenshot.dart';
 import 'jokenpo_page.dart';
-import '../online.dart';
+import 'online_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
