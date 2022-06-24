@@ -6,7 +6,6 @@ class Leaderboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
         appBar: AppBar(
           title: const Text('Leaderboard'),
           backgroundColor: const Color.fromRGBO(161, 220, 216, 1),

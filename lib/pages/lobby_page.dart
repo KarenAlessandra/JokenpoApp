@@ -15,7 +15,23 @@ class LobbyPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text("teste"),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const <Widget>[
+                SizedBox(
+                  height: 200,
+                  child: Text(
+                    'Você é a NUMERO pessoa na fila',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(161, 220, 216, 1),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

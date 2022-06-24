@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto/pages/lobby_page.dart';
 import 'package:projeto/pages/login_page.dart';
@@ -11,7 +12,6 @@ class Online extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
         appBar: AppBar(
           // title: const Text('Leaderboard'),
           backgroundColor: const Color.fromRGBO(161, 220, 216, 1),
@@ -29,13 +29,16 @@ class Online extends StatelessWidget {
           // ],
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
+                SizedBox(
+                  height: 70,
+                  width: 300,
+                  child: ElevatedButton(
                     style: TextButton.styleFrom(
                       backgroundColor: Color.fromRGBO(161, 220, 216, 1),
                     ),
@@ -46,42 +49,66 @@ class Online extends StatelessWidget {
                             builder: (context) => const LobbyPage()),
                       );
                     },
-                    child: const Text('Entrar no lobby')),
+                    child: const Text('Entrar no lobby',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(244, 123, 143, 1),
+                        )),
+                  ),
+                ),
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ElevatedButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Color.fromRGBO(161, 220, 216, 1)),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Leaderboard()),
-                    );
-                  },
-                  child: Text('Leaderboard'),
+                SizedBox(
+                  height: 70,
+                  width: 300,
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(161, 220, 216, 1),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Leaderboard()),
+                      );
+                    },
+                    child: const Text('Leaderboard',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(244, 123, 143, 1))),
+                  ),
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  style: TextButton.styleFrom(
-                      backgroundColor: Color.fromRGBO(161, 220, 216, 1)),
-                  onPressed: () {
-                    context.read<AuthService>().logout();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
-                    );
-                  },
-                  child: Text('Logoff'),
-                ),
+                SizedBox(
+                  height: 70,
+                  width: 300,
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                        backgroundColor: Color.fromRGBO(161, 220, 216, 1)),
+                    onPressed: () {
+                      context.read<AuthService>().logout();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
+                      );
+                    },
+                    child: const Text('Logoff',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(244, 123, 143, 1))),
+                  ),
+                )
               ],
             )
           ],
