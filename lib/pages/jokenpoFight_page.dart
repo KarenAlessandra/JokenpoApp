@@ -14,10 +14,9 @@ import 'package:share/share.dart';
 import 'home_page.dart';
 import 'jokenpo_page.dart';
 
-class JokenpoFightPage extends StatelessWidget {
+class JokenpoFightPage extends StatefulWidget {
   late String escolha;
   late String pc;
-  final controller = ScreenshotController();
   late Image escolhaImage;
   late Image pcImage;
   // const JokenpoFightPage({Key? key, escolha = String}) : super(key: key);
@@ -28,9 +27,22 @@ class JokenpoFightPage extends StatelessWidget {
     pcImage = choiceToImage(pc, true);
   }
 
+  @override
+  State<JokenpoFightPage> createState() => _JokenpoFightPageState();
+}
+
+class _JokenpoFightPageState extends State<JokenpoFightPage> {
+  late ScreenshotController screenshotController;
+
   void dispose() {
-    escolhaImage.image.evict();
-    pcImage.image.evict();
+    widget.escolhaImage.image.evict();
+    widget.pcImage.image.evict();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    screenshotController = ScreenshotController();
   }
 
   @override
@@ -39,11 +51,12 @@ class JokenpoFightPage extends StatelessWidget {
         fontSize: 60,
         fontWeight: FontWeight.bold,
         color: Color.fromRGBO(244, 123, 143, 1));
-    return Screenshot(
-        controller: controller,
-        child: Scaffold(
-          backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
-          body: Center(
+    return Scaffold(
+      backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
+      body: Builder(builder: (context) {
+        return Screenshot(
+          controller: screenshotController,
+          child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,11 +75,11 @@ class JokenpoFightPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    escolhaImage,
-                    pcImage,
+                    widget.escolhaImage,
+                    widget.pcImage,
                   ],
                 ),
-                whoWon(escolha, pc),
+                whoWon(widget.escolha, widget.pc),
 
                 BotaoJogar(
                     title: "Jogar novamente",
@@ -91,15 +104,17 @@ class JokenpoFightPage extends StatelessWidget {
                     title: "Captura de tela",
                     action: () async {
                       // dispose();
-                      final image =
-                          await controller.captureFromWidget(build(context));
+                      final image = await screenshotController.capture();
+                      Share.shareFiles([image]);
                     }),
                 const Padding(padding: EdgeInsets.all(25.0)),
                 // espaçamento
               ],
             ),
           ),
-        ));
+        );
+      }),
+    );
   }
 }
 
