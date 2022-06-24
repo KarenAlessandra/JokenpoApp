@@ -12,7 +12,7 @@ class JokenpoPage extends StatelessWidget {
     const style = TextStyle(
         fontWeight: FontWeight.bold, color: Color.fromRGBO(244, 123, 143, 1));
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(161, 220, 216, 1),
         actions: [
@@ -157,7 +157,7 @@ class JokenpoPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.only(left: 180, top: 20),
+              padding: const EdgeInsets.only(left: 20, top: 20),
               child: Image(
                   image: AssetImage('imagens/cat_fight.gif'), height: 200),
             ),

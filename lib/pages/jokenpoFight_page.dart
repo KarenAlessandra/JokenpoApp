@@ -52,7 +52,7 @@ class _JokenpoFightPageState extends State<JokenpoFightPage> {
         fontWeight: FontWeight.bold,
         color: Color.fromRGBO(244, 123, 143, 1));
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(237, 237, 237, 1),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Builder(builder: (context) {
         return Screenshot(
           controller: screenshotController,
@@ -166,11 +166,11 @@ randomChoice() {
   var random = Random();
   var choice = random.nextInt(3);
   if (choice == 0) {
-    return "pedra";
+    return "Pedra";
   } else if (choice == 1) {
-    return "papel";
+    return "Papel";
   } else {
-    return "tesoura";
+    return "Tesoura";
   }
 }
 
@@ -186,7 +186,7 @@ class whoWon extends StatelessWidget {
   Widget build(BuildContext context) {
     var ganhou = jogar(p1, p2);
     return Text(
-      ganhou + " ganhou",
+      ganhou + " ganhou!",
       style: const TextStyle(
         fontSize: 30,
         fontWeight: FontWeight.bold,
