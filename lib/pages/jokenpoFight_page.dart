@@ -18,10 +18,19 @@ class JokenpoFightPage extends StatelessWidget {
   late String escolha;
   late String pc;
   final controller = ScreenshotController();
+  late Image escolhaImage;
+  late Image pcImage;
   // const JokenpoFightPage({Key? key, escolha = String}) : super(key: key);
   JokenpoFightPage(escolha, {Key? key}) {
     this.escolha = escolha;
     pc = randomChoice();
+    escolhaImage = choiceToImage(escolha, false);
+    pcImage = choiceToImage(pc, true);
+  }
+
+  void dispose() {
+    escolhaImage.image.evict();
+    pcImage.image.evict();
   }
 
   @override
@@ -53,8 +62,8 @@ class JokenpoFightPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    choiceToImage(escolha, false),
-                    choiceToImage(pc, true),
+                    escolhaImage,
+                    pcImage,
                   ],
                 ),
                 whoWon(escolha, pc),
@@ -62,26 +71,30 @@ class JokenpoFightPage extends StatelessWidget {
                 BotaoJogar(
                     title: "Jogar novamente",
                     action: () {
+                      dispose();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => JokenpoPage(),
-                            maintainState: false),
+                          builder: (context) => const JokenpoPage(),
+                          // maintainState: false
+                        ),
                       );
                     }),
                 BotaoJogar(
                     title: "Voltar ao Menu",
                     action: () {
+                      dispose();
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     }),
                 BotaoJogar(
                     title: "Captura de tela",
                     action: () async {
+                      // dispose();
                       final image =
                           await controller.captureFromWidget(build(context));
                     }),
-                Padding(padding: EdgeInsets.all(0.0)),
+                const Padding(padding: EdgeInsets.all(25.0)),
                 // espaçamento
               ],
             ),
@@ -99,10 +112,17 @@ choiceToImage(String choice, bool other) {
         width: 205.5,
       );
     } else if (choice == "papel") {
-      return Image.asset("imagens/user_paper.gif", height: 205.5, width: 205.5);
+      return Image.asset(
+        "imagens/user_paper.gif",
+        height: 205.5,
+        width: 205.5,
+      );
     } else {
-      return Image.asset("imagens/user_scissors.gif",
-          height: 205.5, width: 205.5);
+      return Image.asset(
+        "imagens/user_scissors.gif",
+        height: 205.5,
+        width: 205.5,
+      );
     }
   } else {
     if (choice == "pedra") {
@@ -112,10 +132,17 @@ choiceToImage(String choice, bool other) {
         width: 205.5,
       );
     } else if (choice == "papel") {
-      return Image.asset("imagens/grey_paper.gif", height: 205.5, width: 205.5);
+      return Image.asset(
+        "imagens/grey_paper.gif",
+        height: 205.5,
+        width: 205.5,
+      );
     } else {
-      return Image.asset("imagens/grey_scissors.gif",
-          height: 205.5, width: 205.5);
+      return Image.asset(
+        "imagens/grey_scissors.gif",
+        height: 205.5,
+        width: 205.5,
+      );
     }
   }
 }

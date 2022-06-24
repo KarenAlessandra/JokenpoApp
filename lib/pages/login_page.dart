@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:projeto/online.dart';
 import 'package:projeto/services/auth_service.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final senha = TextEditingController();
+  final nickname = TextEditingController();
 
   bool isLogin = true;
   late String titulo = '';
@@ -52,7 +55,9 @@ class _LoginPageState extends State<LoginPage> {
 
   registrar() async {
     try {
-      await context.read<AuthService>().registrar(email.text, senha.text);
+      await context
+          .read<AuthService>()
+          .registrar(email.text, senha.text, nickname.text);
     } on AuthException catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
@@ -127,10 +132,19 @@ class _LoginPageState extends State<LoginPage> {
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
                         backgroundColor: Color.fromRGBO(161, 220, 216, 1)),
-                    onPressed: () {
+                    onPressed: () async {
                       if (formKey.currentState!.validate()) {
                         if (isLogin) {
-                          login();
+                          await login();
+                          if (context.read<AuthService>().authCheck()) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Online(),
+                                // maintainState: false
+                              ),
+                            );
+                          }
                         } else {
                           registrar();
                         }
@@ -166,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () => setFormAction(!isLogin),
                     child: Text(toggleButton)),
                 Padding(
-                  padding: const EdgeInsets.only(left: 25),
+                  padding: const EdgeInsets.only(left: 200),
                   child: Image.asset(
                     'imagens/cat_loaf.gif',
                     alignment: Alignment.center,
